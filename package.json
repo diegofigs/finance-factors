@@ -16,7 +16,7 @@
   "scripts": {
     "build": "WEBPACK_ENV=build webpack",
     "dev": "WEBPACK_ENV=dev webpack --progress --colors --watch",
-    "prepublish": "npm run build"
+    "prepublish": "rm -rf ./lib && npm run build"
   },
   "repository": {
     "type": "git",
