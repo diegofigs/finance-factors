@@ -1,0 +1,41 @@
+{
+  "name": "finance-factors",
+  "version": "0.1.0",
+  "description": "Small library for calculation of basic financial factors.",
+  "main": "./lib/finance-factors.min.js",
+  "devDependencies": {
+    "babel": "6.3.13",
+    "babel-core": "6.1.18",
+    "babel-loader": "6.1.0",
+    "babel-plugin-add-module-exports": "0.1.2",
+    "babel-preset-es2015": "6.3.13",
+    "chai": "3.4.1",
+    "mocha": "2.3.4",
+    "webpack": "^2.0.0"
+  },
+  "scripts": {
+    "build": "WEBPACK_ENV=build webpack",
+    "dev": "WEBPACK_ENV=dev webpack --progress --colors --watch",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diegofigs/finance-factors.git"
+  },
+  "keywords": [
+    "finance",
+    "calculation",
+    "calculations",
+    "webpack2",
+    "es6",
+    "es6-modules",
+    "umd",
+    "umd-modules"
+  ],
+  "author": "Diego Figueroa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/diegofigs/finance-factors/issues"
+  },
+  "homepage": "https://github.com/diegofigs/finance-factors#readme"
+}
