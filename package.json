@@ -14,9 +14,11 @@
     "webpack": "^2.0.0"
   },
   "scripts": {
-    "build": "WEBPACK_ENV=build webpack",
+    "build": "npm run clean && WEBPACK_ENV=build webpack",
+    "clean": "rimraf lib",
     "dev": "WEBPACK_ENV=dev webpack --progress --colors --watch",
-    "prepublish": "rm -rf ./lib && npm run build"
+    "test": "npm run build && mocha --compilers js:babel-core/register --colors ./test/*.spec.js",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -42,5 +44,8 @@
     "ignore": [
       "lib"
     ]
+  },
+  "dependencies": {
+    "rimraf": "^2.6.1"
   }
 }
