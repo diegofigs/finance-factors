@@ -15,7 +15,19 @@ npm install finance-factors --save
 ```
 Then, require the package and use it like so:
 ```
-var financeFactors = require('finance-factor');
+// RequireJS
+var financeFactors = require('finance-factors');
+
+// ES6
+import * as financeFactors from 'finance-factors';
+
+// Present Worth Factor based on Single Payment
+// with a 5% interest from 12 periods
+console.log(financeFactors.singlePW(5, 12));
+
+// Future Worth Factor based on Single Payment
+// with a 5% interest over 12 periods
+console.log(financeFactors.singleFW(5, 12));
 ```
 
 ## License
