@@ -14,9 +14,9 @@
     "webpack": "^2.0.0"
   },
   "scripts": {
-    "build": "npm run clean && WEBPACK_ENV=build webpack",
+    "build": "npm run clean && NODE_ENV=production webpack",
     "clean": "rimraf lib",
-    "dev": "WEBPACK_ENV=dev webpack --progress --colors --watch",
+    "dev": "NODE_ENV=staging webpack --progress --colors --watch",
     "test": "npm run build && mocha --compilers js:babel-core/register --colors ./test/*.spec.js",
     "prepublish": "npm run build"
   },

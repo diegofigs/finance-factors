@@ -1,4 +1,4 @@
-var env = process.env.WEBPACK_ENV
+const NODE_ENV = process.env.NODE_ENV
 var webpack = require('webpack')
 var path = require('path')
 var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin
@@ -7,8 +7,11 @@ var libraryName = 'finance-factors'
 var plugins = []
 var outputFile
 
-if (env === 'build') {
-  plugins.push(new UglifyJsPlugin({ minimize: true }))
+if (NODE_ENV === 'production') {
+  plugins.push(new UglifyJsPlugin({
+    minimize: true,
+    compress: true
+  }))
   outputFile = libraryName + '.min.js'
 } else {
   outputFile = libraryName + '.js'
@@ -16,7 +19,7 @@ if (env === 'build') {
 
 var config = {
   entry: path.resolve('src/index.js'),
-  devtool: 'source-map',
+  devtool: NODE_ENV === 'staging' ? 'cheap-module-eval-source' : 'source-map',
   output: {
     path: path.resolve('lib'),
     filename: outputFile,
