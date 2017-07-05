@@ -1,10 +1,17 @@
+/**
+ * finance-factor's unit test module
+ * @module finance-factors/test
+ * @license MIT
+ * @author diegofigs
+ */
+
 /* global describe, context, it */
 import chai from 'chai'
 import * as lib from '../lib/finance-factors.min'
 const expect = chai.expect
 
 describe('finance-factors', () => {
-  describe('.singleFW()', () => {
+  describe('#singleFW()', () => {
     context('with 5% interest', () => {
       it('should return 1.05 over 1 period', () => {
         expect(lib.singleFW(5, 1)).to.be.equal(1.05)
@@ -22,8 +29,16 @@ describe('finance-factors', () => {
         expect(lib.singleFW(5, 12)).to.be.equal(1.7958563260221292)
       })
     })
+    context('inverse relationship with PW factor', () => {
+      it('should return inverse of PW(5,1)', () => {
+        expect(lib.singleFW(5, 1)).to.be.equal(1 / 0.9523809523809523)
+      })
+      it('should return inverse of PW(5,12)', () => {
+        expect(lib.singleFW(5, 12)).to.be.equal(1 / 0.5568374181775595)
+      })
+    })
   })
-  describe('.singlePW()', () => {
+  describe('#singlePW()', () => {
     context('with 5% interest', () => {
       it('should return 0.9523809523809523 from 1 period', () => {
         expect(lib.singlePW(5, 1)).to.be.equal(0.9523809523809523)
@@ -41,18 +56,12 @@ describe('finance-factors', () => {
         expect(lib.singlePW(5, 12)).to.be.equal(0.5568374181775595)
       })
     })
-  })
-  describe('inverse relationship between PW and FW factors', () => {
-    context('.singlePW()', () => {
-      it('should return inverse of equivalent FW', () => {
+    context('inverse relationship with FW factor', () => {
+      it('should return inverse of FW(5,1)', () => {
         expect(lib.singlePW(5, 1)).to.be.equal(1 / 1.05)
-        expect(lib.singlePW(5, 12)).to.be.equal(1 / 1.7958563260221292)
       })
-    })
-    context('.singleFW()', () => {
-      it('should return inverse of equivalent PW', () => {
-        expect(lib.singleFW(5, 1)).to.be.equal(1 / 0.9523809523809523)
-        expect(lib.singleFW(5, 12)).to.be.equal(1 / 0.5568374181775595)
+      it('should return inverse of FW(5,12)', () => {
+        expect(lib.singlePW(5, 12)).to.be.equal(1 / 1.7958563260221292)
       })
     })
   })
