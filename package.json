@@ -8,20 +8,44 @@
     "babel-core": "6.1.18",
     "babel-loader": "6.1.0",
     "babel-plugin-add-module-exports": "0.1.2",
+    "babel-plugin-istanbul": "^4.1.4",
     "babel-preset-es2015": "6.3.13",
     "chai": "3.4.1",
+    "docdash": "^0.4.0",
     "eslint": "^3.17.0",
+    "jsdoc": "^3.4.3",
     "mocha": "2.3.4",
+    "nyc": "^11.0.3",
     "rimraf": "^2.6.1",
     "standard": "^9.0.0",
     "webpack": "^2.0.0"
   },
   "scripts": {
-    "build": "npm run clean && NODE_ENV=production webpack",
-    "clean": "rimraf lib",
-    "dev": "NODE_ENV=staging webpack --progress --colors --watch",
-    "test": "standard && npm run build && mocha --compilers js:babel-core/register --colors ./test/*.spec.js",
-    "prepublish": "npm run build"
+    "build": "npm run clean && npm run build:docs && npm run build:lib",
+    "build:docs": "npm run clean:docs && jsdoc -c jsdoc.json",
+    "build:lib": "npm run clean:lib && NODE_ENV=production webpack",
+    "clean": "npm run clean:docs && npm run clean:lib && npm run clean:test",
+    "clean:docs": "rimraf docs",
+    "clean:lib": "rimraf lib",
+    "clean:test": "rimraf .nyc_output coverage",
+    "serve": "NODE_ENV=staging webpack --progress --colors",
+    "serve:watch": "npm run serve -- --watch",
+    "test": "npm run test:lint && npm run test:coverage",
+    "test:coverage": "npm run clean:test && nyc npm run test:unit",
+    "test:lint": "standard ./src ./test",
+    "test:unit": "mocha --compilers js:babel-core/register ./test/*.spec.js",
+    "prepublish": "npm run test && npm run build"
+  },
+  "nyc": {
+    "require": [
+      "babel-core/register"
+    ],
+    "reporter": [
+      "html",
+      "text"
+    ],
+    "sourceMap": false,
+    "instrument": false
   },
   "repository": {
     "type": "git",
@@ -47,6 +71,5 @@
     "ignore": [
       "lib"
     ]
-  },
-  "dependencies": {}
+  }
 }
