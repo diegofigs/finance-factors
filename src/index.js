@@ -1,8 +1,8 @@
 /**
  * Small library for calculation of basic financial factors.
- * @module finance-factors/src
+ * @module finance-factors
+ * @author diegofigs <diego.fv94@gmail.com>
  * @license MIT
- * @author diegofigs
  */
 
 /**
@@ -10,6 +10,8 @@
  * @param {Number} i 100-based interest rate e.g. 15% = 15
  * @param {Number} n number of periods
  * @return {Number}
+ * @example let futureWorth = singleFW(5, 1);
+ * console.log(futureWorth); // Returns 1.05
  */
 export function singleFW (i, n) {
   let futureWorthFactor = Math.pow((1 + (i / 100)), n)
@@ -22,6 +24,8 @@ export function singleFW (i, n) {
  * @param {Number} i 100-based interest rate e.g. 15% = 15
  * @param {Number} n number of periods
  * @return {Number}
+ * @example let presentWorth = singlePW(5, 1);
+ * console.log(presentWorth); // Returns 0.9523809523809523
  */
 export function singlePW (i, n) {
   let presentWorthFactor = 1 / singleFW(i, n)
