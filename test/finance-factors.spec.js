@@ -1,13 +1,6 @@
-/**
- * finance-factor's unit test module
- * @module finance-factors/test
- * @license MIT
- * @author diegofigs
- */
-
 /* global describe, context, it */
 import chai from 'chai'
-import * as lib from '../lib/finance-factors.min'
+import * as lib from '../src/index'
 const expect = chai.expect
 
 describe('finance-factors', () => {
