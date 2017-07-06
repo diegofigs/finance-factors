@@ -61,12 +61,12 @@
     "umd",
     "umd-modules"
   ],
-  "author": "Diego Figueroa",
+  "author": "Diego Figueroa <diego@dfigueroa.me> (http://dfigueroa.me)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/diegofigs/finance-factors/issues"
   },
-  "homepage": "https://github.com/diegofigs/finance-factors#readme",
+  "homepage": "http://dfigueroa.me/finance-factors/index.html",
   "standard": {
     "ignore": [
       "lib"
