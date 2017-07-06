@@ -1,6 +1,6 @@
 {
   "name": "finance-factors",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "Small library for calculation of basic financial factors.",
   "main": "./lib/finance-factors.min.js",
   "devDependencies": {
